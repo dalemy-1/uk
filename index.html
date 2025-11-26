@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="uk">
 <head>
   <meta charset="utf-8" />
-  <title>深评 · 省心好物 — 专业 Amazon 产品评测与精选推荐</title>
+  <title>Deep Review · Smart Picks — Amazon Product Reviews & Guides</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="深评 · 省心好物：以杂志式编辑风格呈现 Amazon 产品评测与购买指南。本站参与 Amazon Associates Program，部分链接为联盟链接。" />
+  <meta name="description" content="Deep Review · Smart Picks: editorial-style Amazon product reviews and buying guides. This site participates in the Amazon Associates Program; some links are affiliate links." />
   <style>
     :root{
       --bg:#f5f5f5;
@@ -30,7 +30,6 @@
     nav a{margin-right:16px;color:var(--muted);font-weight:600}
     nav a:hover{color:var(--ink)}
     main{max-width:var(--maxw);margin:0 auto;padding:20px}
-    /* hero editorial */
     .hero{display:grid;grid-template-columns:3fr 2fr;gap:18px}
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .hero-main{background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(15,23,42,0.08)}
@@ -47,7 +46,6 @@
     .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
     .chip{padding:5px 11px;border-radius:999px;border:1px solid var(--border);font-size:.82rem;color:var(--muted);cursor:pointer;background:#fff}
     .chip.active{background:var(--accent-soft);border-color:var(--accent);color:#c2410c}
-    /* list */
     .list-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:26px}
     .list-head h2{font-size:1.25rem}
     .list-head .sub{font-size:.9rem;color:var(--muted);margin-top:4px}
@@ -71,7 +69,6 @@
     .btn-ghost:hover{background:#f3f4f6}
     .load-wrap{text-align:center;margin-top:16px}
     .load-wrap button{border-radius:999px;padding:8px 16px;border:1px solid var(--border);background:#fff;font-size:.9rem;cursor:pointer}
-    /* detail editorial */
     .detail{margin-top:26px;display:none}
     .detail-inner{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px;display:grid;grid-template-columns:320px 1fr;gap:18px;box-shadow:0 10px 28px rgba(15,23,42,0.08)}
     @media(max-width:900px){.detail-inner{grid-template-columns:1fr}}
@@ -82,7 +79,6 @@
     .pill{padding:4px 9px;border-radius:999px;background:#f3f4f6;color:#4b5563}
     .detail-body p{margin-bottom:8px;font-size:.93rem;color:#374151}
     .detail-actions{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px}
-    /* sections */
     .section{margin-top:26px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px;font-size:.93rem;color:#374151}
     .section h2{font-size:1.15rem;margin-bottom:6px}
     .section p{margin-bottom:8px}
@@ -100,195 +96,232 @@
   <div class="wrap">
     <div class="brand-row">
       <div>
-        <div class="logo">深评 · 省心好物</div>
-        <div class="tagline">以编辑部视角撰写的 Amazon 产品评测与购买建议 · 非 Amazon 官方网站</div>
+        <div class="logo">Deep Review · Smart Picks</div>
+        <div class="tagline">Editorial-style Amazon product reviews & buying advice · Not affiliated with Amazon, Inc.</div>
       </div>
-      <div style="font-size:.8rem;color:var(--muted)">专注：电子 · 家居 · 厨房 · 户外 · 影音 · 车载 · 办公 · 运动</div>
+      <div style="font-size:.8rem;color:var(--muted)">Focus: Electronics · Home · Kitchen · Outdoor · Audio & Video · Car · Office · Sports</div>
     </div>
     <nav>
-      <a href="#home">首页</a>
-      <a href="#guides">购买指南</a>
-      <a href="#about">关于我们</a>
-      <a href="#privacy">隐私政策</a>
-      <a href="#disclosure">联盟披露</a>
+      <a href="#home">Home</a>
+      <a href="#guides">Buying Guide</a>
+      <a href="#about">About</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#disclosure">Affiliate Disclosure</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- Hero editorial style -->
-  <section id="home" class="hero" aria-label="网站介绍">
+  <section id="home" class="hero" aria-label="Intro">
     <article class="hero-main">
-      <h1>用编辑部视角，帮你过滤掉 80% 不值得看的产品。</h1>
-      <p>我们以“真实使用场景 + 优缺点清单 + 购买建议”的方式撰写评测摘要，而不是简单复制商品文案。页面上展示的产品为示例结构，展示如何合规、安全地呈现 Amazon 联盟链接与内容布局。</p>
+      <h1>We help you ignore 80% of products that aren’t worth your time.</h1>
+      <p>Instead of copying product descriptions, we summarise real-world use cases, pros & cons and clear buying advice. The products on this page are example entries that demonstrate a safe, compliant way to structure an Amazon affiliate site for review and content evaluation.</p>
       <div class="hero-meta">
-        <span>· 覆盖 8 大使用场景</span>
-        <span>· 100 条产品条目</span>
-        <span>· 每条都附带购买建议</span>
+        <span>· 8 major everyday categories</span>
+        <span>· 100 editorial-style entries</span>
+        <span>· Each with a clear recommendation</span>
       </div>
       <div class="search" role="search">
-        <input id="searchInput" placeholder="搜索产品名称、类别或关键字，例如：耳机、露营、办公灯" />
-        <button id="searchBtn">搜索</button>
+        <input id="searchInput" placeholder="Search by product name, category or keyword e.g. headphones, camping, desk lamp" />
+        <button id="searchBtn">Search</button>
       </div>
-      <div class="chips" aria-label="分类筛选">
-        <div class="chip active" data-cat="全部">全部</div>
-        <div class="chip" data-cat="电子">电子</div>
-        <div class="chip" data-cat="家居">家居</div>
-        <div class="chip" data-cat="厨房">厨房</div>
-        <div class="chip" data-cat="户外">户外</div>
-        <div class="chip" data-cat="影音">影音</div>
-        <div class="chip" data-cat="车载">车载</div>
-        <div class="chip" data-cat="办公">办公</div>
-        <div class="chip" data-cat="运动">运动</div>
+      <div class="chips" aria-label="Category filters">
+        <div class="chip active" data-cat="All">All</div>
+        <div class="chip" data-cat="Electronics">Electronics</div>
+        <div class="chip" data-cat="Home">Home</div>
+        <div class="chip" data-cat="Kitchen">Kitchen</div>
+        <div class="chip" data-cat="Outdoor">Outdoor</div>
+        <div class="chip" data-cat="Audio & Video">Audio & Video</div>
+        <div classchip" data-cat="Car">Car</div>
+        <div class="chip" data-cat="Office">Office</div>
+        <div class="chip" data-cat="Sports">Sports</div>
       </div>
     </article>
     <aside class="hero-side">
-      <h2>如何阅读这些评测？</h2>
-      <p style="font-size:.9rem;color:#4b5563;">每条产品都包含 3 个核心信息：<strong>产品定位</strong>、<strong>优缺点</strong> 和 <strong>推荐人群</strong>。你可以把本页面当作“编辑精选清单”，用来缩小选择范围。</p>
+      <h2>How to read these reviews</h2>
+      <p style="font-size:.9rem;color:#4b5563;">Each entry highlights three key points: <strong>product role</strong>, <strong>main strengths & trade-offs</strong>, and <strong>who it’s actually for</strong>. Think of this page as an editorial shortlist that narrows down your choices before you dive into detailed specs on Amazon.</p>
       <ul>
-        <li>先按类别筛选，浏览合适的使用场景；</li>
-        <li>点击“阅读评测”，查看详细分析；</li>
-        <li>若确实感兴趣，再点击按钮前往 Amazon 了解更多。</li>
+        <li>Filter by category to match your real-world scenario;</li>
+        <li>Click “Read review” to see the full breakdown;</li>
+        <li>Only then, follow through to Amazon if it still looks relevant.</li>
       </ul>
-      <p style="font-size:.85rem;color:var(--muted);margin-top:4px;">提示：本页面为结构示例，不代表真实库存与价格，实际信息以 Amazon 页面为准。</p>
+      <p style="font-size:.85rem;color:var(--muted);margin-top:4px;">
+        Note: The entries below are example structures. Availability, pricing and final details are always determined by Amazon’s own product pages.
+      </p>
     </aside>
   </section>
 
-  <!-- List -->
-  <section aria-label="产品列表">
+  <section aria-label="Product list">
     <div class="list-head">
       <div>
-        <h2>精选产品推荐列表</h2>
-        <div class="sub">示例站点：用于展示 Amazon 联盟网站的内容与结构设计，方便联盟审核。</div>
+        <h2>Featured product short-list</h2>
+        <div class="sub">Editorial-style example content designed to show how a compliant Amazon affiliate site can be structured.</div>
       </div>
       <div class="count" id="countInfo"></div>
     </div>
     <div class="grid" id="productGrid"></div>
     <div class="load-wrap">
-      <button id="loadMoreBtn">加载更多产品</button>
+      <button id="loadMoreBtn">Load more products</button>
     </div>
   </section>
 
-  <!-- Detail -->
-  <section class="detail" id="detailSection" aria-label="产品详情">
+  <section class="detail" id="detailSection" aria-label="Product detail">
     <div class="detail-inner" id="detailInner"></div>
   </section>
 
-  <!-- Editorial sections -->
   <section id="guides" class="section">
-    <h2>购买指南：如何快速判断一款产品是否值得买？</h2>
-    <p>无论是耳机、空气炸锅还是露营装备，我们建议你在下单前先回答三个问题：</p>
+    <h2>Buying guide: three questions before you click “Buy now”</h2>
+    <p>Whether you’re shopping for headphones, an air fryer or camping gear, it helps to pause and answer three quick questions:</p>
     <ul>
-      <li><strong>我会在什么场景下使用它？</strong> 家里、公司、户外，还是旅行途中？</li>
-      <li><strong>我愿意为这个场景付出多大的预算？</strong> 这决定了应该看入门款还是中高端款。</li>
-      <li><strong>我最在意哪 2–3 个指标？</strong> 例如：噪音、续航、重量、占空间、清洁难度等。</li>
+      <li><strong>Where will you actually use it?</strong> At home, at the office, on the commute, or out in the field?</li>
+      <li><strong>What’s your realistic budget?</strong> This decides whether you should look at entry-level, mid-range or premium options.</li>
+      <li><strong>Which 2–3 things matter most?</strong> For example: noise, battery life, weight, ease of cleaning, storage space, or warranty.</li>
     </ul>
-    <p>本页面的每条评测都会围绕“定位、优缺点与推荐人群”展开，帮助你在 3–5 分钟内完成一次有效筛选，而不是在商品列表中无休止横跳。</p>
+    <p>Every review on this page is written to support those questions so you can make a decision in 3–5 minutes instead of getting lost in endless product lists.</p>
   </section>
 
   <section id="about" class="section">
-    <h2>关于我们</h2>
-    <p>“深评 · 省心好物” 是一个独立运营的内容站点，不隶属于 Amazon 或任何品牌官方。我们通过整理公开资料、用户口碑与产品参数，撰写出适合大多数用户阅读的评测摘要，侧重易读性与决策支持。</p>
-    <p>我们的目标不是给出“绝对正确”的结论，而是帮你快速识别：一款产品大致适合哪些人、不适合哪些人，在什么预算下它算“值”，什么情况下应该换其它备选。</p>
+    <h2>About this site</h2>
+    <p>“Deep Review · Smart Picks” is an independently operated content site. We are not affiliated with Amazon or any specific brand. Our goal is to summarise public information, user feedback and product specs into concise, editorial-style overviews that are genuinely helpful for everyday buyers.</p>
+    <p>Rather than chasing hype or copying marketing copy, we aim to clarify what a product actually does well, what it compromises on, and which kind of user is likely to benefit from it.</p>
   </section>
 
   <section id="privacy" class="section">
-    <h2>隐私政策（简要说明）</h2>
-    <p>本网站可能使用 Cookie 或第三方分析工具（例如访问统计）来了解整体流量趋势，以便优化内容结构与排版。我们不会主动收集可识别个人身份的信息，更不会出售或出租访问者数据。</p>
-    <p>如未来接入邮件订阅或表单，我们会在对应功能旁提供单独说明，并尊重你的退订与删除权利。</p>
+    <h2>Privacy policy (short version)</h2>
+    <p>This site may use cookies or third-party analytics tools (for example, basic traffic statistics) to understand how readers use our pages and to improve layout and content over time. We do not sell or rent personally identifiable visitor data.</p>
+    <p>If we later add email newsletters, forms or other features that collect personal information, those sections will include a clear explanation of what is collected and how you can opt out or have your data removed.</p>
   </section>
 
   <section id="disclosure" class="section">
-    <h2>联盟披露（Affiliate Disclosure）</h2>
-    <p>本网站参与 Amazon Services LLC Associates Program 及其关联分站的联盟项目。当你点击本页中的部分链接并在 Amazon 完成合格购买时，我们可能会获得一定比例的佣金。</p>
-    <p>这不会增加你的购买成本，也不会改变我们对产品优缺点的描述。你可以把这些链接理解为“在支持本站持续运营的同时完成正常购物”的一种方式。</p>
+    <h2>Affiliate disclosure</h2>
+    <p>This website participates in the Amazon Associates Program and related international affiliate programmes. Some links on this site are affiliate links. If you click through and make a qualifying purchase on Amazon, we may earn a commission.</p>
+    <p>This does not change your price, and it does not override our editorial judgment. Treat these links as a way to support independent review work while doing your normal shopping.</p>
+    <p style="font-size:.85rem;color:#6b7280;">
+      As an Amazon Associate we earn from qualifying purchases.
+    </p>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    © <span id="year"></span> 深评 · 省心好物 · Amazon Associates ID: <span id="tagText"></span><br/>
-    本站为示例性质的评测与推荐结构，用于展示如何以合规方式构建 Amazon 联盟网站。
+    © <span id="year"></span> Deep Review · Smart Picks · Amazon Associates ID: <span id="tagText"></span><br/>
+    This site is an editorial-style example of how to structure a compliant Amazon affiliate website.
   </div>
 </footer>
 
 <script>
-  // ========= 基本配置 =========
-  const AFFILIATE_TAG = 'us1987-20';   // 你的联盟 ID
-  const AMAZON_DOMAIN = 'com';         // 国家站：US: com, UK: co.uk, DE: de, JP: co.jp 等
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('tagText').textContent = AFFILIATE_TAG;
+  // ========= MULTI-COUNTRY CONFIG =========
+  // Change this per site: "US", "UK", "DE", "FR", "IT", "ES", "CA", "JP"
+  const SITE = 'US';  // <-- US site; in your /uk repo set this to 'UK', etc.
 
-  // ========= 产品数据生成（100 条示例） =========
-  const CATEGORIES = ['电子','家居','厨房','户外','影音','车载','办公','运动'];
+  const SITE_CONFIG = {
+    US: { domain: 'com',   tag: 'us1987-20',     label: 'United States' },
+    UK: { domain: 'co.uk', tag: 'uk0e42-21',     label: 'United Kingdom' },
+    DE: { domain: 'de',    tag: 'de0831-21',     label: 'Germany' },
+    FR: { domain: 'fr',    tag: 'alliance1980d-21', label: 'France' },
+    IT: { domain: 'it',    tag: 'alliance19805-21', label: 'Italy' },
+    ES: { domain: 'es',    tag: 'es072-21',      label: 'Spain' },
+    CA: { domain: 'ca',    tag: 'alliance0dd-20', label: 'Canada' },
+    JP: { domain: 'co.jp', tag: 'alliance1987-22', label: 'Japan' }
+  };
+
+  const ACTIVE = SITE_CONFIG[SITE] || SITE_CONFIG.US;
+  const AMAZON_DOMAIN = ACTIVE.domain;
+  const AFFILIATE_TAG = ACTIVE.tag;
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('tagText').textContent = AFFILIATE_TAG + ' · ' + (ACTIVE.label || '');
+
+  // ========= DATA GENERATION =========
+  const CATEGORIES = [
+    'Electronics',
+    'Home',
+    'Kitchen',
+    'Outdoor',
+    'Audio & Video',
+    'Car',
+    'Office',
+    'Sports'
+  ];
 
   const TITLE_TEMPLATES = {
-    '电子':'通勤与日常使用电子设备',
-    '家居':'提升居家舒适度的生活好物',
-    '厨房':'简化备菜和烹饪流程的厨房工具',
-    '户外':'适合周末出行与露营使用的装备',
-    '影音':'用于音乐、观影与娱乐的影音产品',
-    '车载':'改善通勤体验的车载小配件',
-    '办公':'提升效率的办公与学习工具',
-    '运动':'辅助日常锻炼与恢复的运动用品'
+    'Electronics':'Everyday electronics for commute & home use',
+    'Home':'Home comfort & organisation essentials',
+    'Kitchen':'Practical tools to simplify cooking',
+    'Outdoor':'Gear for short trips & casual camping',
+    'Audio & Video':'Audio & video gear for everyday entertainment',
+    'Car':'Small car accessories that improve daily driving',
+    'Office':'Tools that make working and studying easier',
+    'Sports':'Everyday fitness & body-care helpers'
   };
 
   function makeAsin(i){
-    return 'B0DEMO' + String(i).padStart(4,'0'); // 示例 ASIN，不对应真实商品
+    return 'B0DEMO' + String(i).padStart(4,'0'); // demo ASIN, not a real product
   }
 
   function makeTitle(i,cat){
-    return TITLE_TEMPLATES[cat] + ' · 第 ' + i + ' 款';
+    return TITLE_TEMPLATES[cat] + ' · Pick ' + i;
   }
 
   function makePrice(i){
-    const base = 18 + (i % 45);        // 18–62
+    const base = 18 + (i % 45);
     return (base + 0.99).toFixed(2);
   }
 
-  function makeImg(i){
-    // 稳定可用占位图：不会触发版权与跨域问题
-    return 'https://picsum.photos/seed/prod' + i + '/800/600';
+  function makeImg(category){
+    const map = {
+      'Electronics': 'electronics,gadgets',
+      'Home': 'home,interior,decor',
+      'Kitchen': 'kitchen,cooking',
+      'Outdoor': 'outdoor,camping',
+      'Audio & Video': 'audio,speaker,headphones',
+      'Car': 'car,vehicle,interior',
+      'Office': 'office,desk,workspace',
+      'Sports': 'fitness,workout'
+    };
+    const query = map[category] || 'product';
+    // Unsplash random image; legally safe for placeholder usage
+    return `https://source.unsplash.com/600x400/?${encodeURIComponent(query)}`;
   }
 
   function makeReview(product){
     const cat = product.category;
     const scene = {
-      '电子':'日常通勤、在家影音娱乐以及偶尔出差的使用场景',
-      '家居':'卧室、客厅与书房等家庭空间，希望整体更舒适、更易打理的用户',
-      '厨房':'日常备菜烹饪、简易烤焙与偶尔的小聚会',
-      '户外':'短途露营、城市周边出行以及应急备用场景',
-      '影音':'音乐播放、电影追剧与背景音营造',
-      '车载':'日常通勤、城际出行以及长途自驾',
-      '办公':'在家或办公室的长时间电脑工作与阅读学习',
-      '运动':'日常健身、居家训练与体态管理'
-    }[cat] || '日常使用场景';
+      'Electronics':'day-to-day commuting, working from home and light travel',
+      'Home':'bedrooms, living rooms and small apartments where comfort matters',
+      'Kitchen':'day-to-day meal prep, batch cooking and small family gatherings',
+      'Outdoor':'short trips, casual camping and basic emergency use',
+      'Audio & Video':'music, movie nights and background sound while working',
+      'Car':'daily commuting, school runs and longer weekend drives',
+      'Office':'working from home, office desk setups and focused study sessions',
+      'Sports':'everyday workouts, light training and basic recovery routines'
+    }[cat] || 'everyday usage scenarios';
 
     const intro =
-      `【产品定位】\n` +
-      `这款产品被设计成一款适合${scene}的实用型选择。它的目标并不是在某一个单项参数上“碾压同类”，而是在功能完整度、易用性与价格之间找到一个相对平衡的点。对于刚接触该类产品、或不想花太多时间做复杂比较的用户来说，它属于那种“买来就能用”的稳妥方案。`;
+`[Positioning]
+This product is aimed at people who need a practical solution for ${scene}. It is not designed to win spec charts or impress enthusiasts. Instead, it tries to strike a balance between “good enough performance”, “simple to use” and “reasonable cost”. For anyone who does not want to spend hours comparing dozens of similar items, it sits in that comfortable middle ground of “safe to try” rather than “risky experiment”.`;
 
     const build =
-      `【外观与做工】\n` +
-      `从外观观感上看，整体线条偏向简洁，颜色和材质不会太张扬，放在家里或办公室都比较容易融入环境。主要结构使用了常见的工程塑料或金属框架，在同价位产品中做工处于正常偏上的水平。日常搬动、收纳或携带都不需要特别小心，但也不建议高强度摔打。`;
+`[Design & build]
+Visually, it leans towards a simple, neutral look that blends into most homes and offices rather than standing out. Materials are typical of this price band: a mix of plastics and, in some cases, metal reinforcement at stress points. In hand, it does not feel ultra-premium, but it also avoids the creaks and rattles sometimes found in very cheap gear. You do not need to treat it like a fragile museum piece, but as with any everyday item, it still benefits from basic care.`;
 
     const use =
-      `【功能与使用体验】\n` +
-      `在实际体验中，我们更关注“好不好上手”和“在典型场景下是否稳定”。这款产品的操作逻辑相对直观，大多数人不看说明书也能在几分钟内摸清主要功能。长时间连续使用时，没有遇到明显异常的过热或性能骤降情况。与更高价位的专业型号相比，它在细节调校和拓展功能上略显朴素，但对目标人群来说已经足够。`;
+`[Functionality & everyday use]
+In day-to-day use, the most important questions are: is it easy to understand, and does it behave consistently? On both counts, this model performs well. Controls follow a sensible layout, and most people can get the core features running without reading the manual more than once. Over longer sessions it remains stable, with no dramatic drop-off in performance under normal conditions. Compared with more expensive, feature-packed models, it feels modest, but that simplicity is exactly what many mainstream users actually prefer.`;
 
     const prosCons =
-      `【优点与不足】\n` +
-      `优点方面，首先是整体性价比较高：在合理的预算下能覆盖核心需求；其次是维护与清洁相对轻松，不需要额外购买复杂耗材；再次是学习成本低，对家人或同事而言也容易上手。对应的不足也比较明确：如果你已经是重度玩家或专业用户，可能会觉得可玩空间有限，细节设定和极限性能不够“极致”。`;
+`[Strengths & trade-offs]
+The main strengths are its value for money, its forgiving learning curve and the low maintenance requirements. It works reliably enough that you can mostly forget about it and focus on your actual task, whether that is cooking, working, driving or exercising. On the downside, demanding users may find that the feature set feels limited, and that fine-grained tuning options or high-end materials are missing. In other words, it is a solid everyday tool rather than an enthusiast’s showpiece.`;
 
     const advice =
-      `【推荐人群与购买建议】\n` +
-      `综合考虑价格、功能与使用门槛，这款产品更适合第一次尝试该品类、或者追求“省事、省心”的用户。如果你只希望在日常生活中多一点便利，而不打算围绕它做深度折腾，它会是一个相对安全的选择；如果你已经明确知道自己在寻找非常专业的设备，不妨把它当作参考基线，并将更高端的型号列入备选清单，通过对比找到真正适合自己的那一款。`;
+`[Who should consider it?]
+Taken together, this product is best suited to people who want something that is dependable, easy to live with and does not require a big time or money investment. If you simply want your gear to “do its job” without a steep learning curve, it is a very reasonable option. If you already know you need specialised features, top-tier build or professional-grade performance, you should treat this as a reference baseline and compare it directly with higher-end alternatives before deciding.`;
 
     return [intro, build, use, prosCons, advice].join('\n\n');
   }
 
   function makeSnippet(review){
-    return review.slice(0, 90) + '...';
+    return review.slice(0, 110) + '...';
   }
 
   const PRODUCTS = [];
@@ -297,14 +330,14 @@
     const asin = makeAsin(i);
     const title = makeTitle(i,cat);
     const price = makePrice(i);
-    const img = makeImg(i);
+    const img = makeImg(cat);
     const base = {id:i,asin,category:cat,title,price,img};
     base.review = makeReview(base);
     base.snippet = makeSnippet(base.review);
     PRODUCTS.push(base);
   }
 
-  // ========= 渲染逻辑 =========
+  // ========= RENDERING =========
   let currentList = PRODUCTS.slice();
   let shown = 12;
   const perPage = 12;
@@ -316,7 +349,7 @@
   const loadMoreBtn = document.getElementById('loadMoreBtn');
 
   function affiliateUrl(product){
-    // 使用搜索链接，保证页面存在，避免因为示例 ASIN 404
+    // Use a search URL so it always resolves; avoids 404 on demo ASINs
     const q = encodeURIComponent(product.category + ' ' + product.title);
     return `https://www.amazon.${AMAZON_DOMAIN}/s?k=${q}&tag=${AFFILIATE_TAG}`;
   }
@@ -329,20 +362,20 @@
 
   function renderGrid(){
     const toShow = currentList.slice(0, shown);
-    countEl.textContent = `当前展示 ${toShow.length} / ${currentList.length} 条产品（总共 100 条示例）`;
+    countEl.textContent = `Showing ${toShow.length} of ${currentList.length} entries (100 total demo entries)`;
     gridEl.innerHTML = toShow.map(p => `
       <article class="card">
         <div class="thumb">
           <img src="${p.img}" alt="${escapeHtml(p.title)}" loading="lazy">
         </div>
-        <div class="cat">${escapeHtml(p.category)} · 示例 · ASIN: ${p.asin}</div>
+        <div class="cat">${escapeHtml(p.category)} · Demo entry · ASIN: ${p.asin}</div>
         <div class="title">${escapeHtml(p.title)}</div>
         <div class="snippet">${escapeHtml(p.snippet)}</div>
         <div class="meta">
-          <div class="price">约 $${p.price}</div>
+          <div class="price">Approx. $${p.price}</div>
           <div class="btn-row">
-            <button class="btn btn-ghost" onclick="openDetail('${p.asin}')">阅读评测</button>
-            <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">前往 Amazon</a>
+            <button class="btn btn-ghost" onclick="openDetail('${p.asin}')">Read review</button>
+            <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">Go to Amazon</a>
           </div>
         </div>
       </article>
@@ -360,18 +393,18 @@
       </div>
       <div>
         <div class="detail-title">${escapeHtml(p.title)}</div>
-        <div class="detail-meta">类别：${escapeHtml(p.category)} · 示例 ASIN：${p.asin} · 约 $${p.price}</div>
+        <div class="detail-meta">Category: ${escapeHtml(p.category)} · Demo ASIN: ${p.asin} · approx. $${p.price}</div>
         <div class="pill-row">
-          <span class="pill">编辑部视角评测</span>
-          <span class="pill">示例站点 · 结构演示</span>
-          <span class="pill">适合：日常用户</span>
+          <span class="pill">Editorial-style summary</span>
+          <span class="pill">Structure demo for Amazon Associates</span>
+          <span class="pill">Best for: everyday users</span>
         </div>
         <div class="detail-body">
           ${p.review.split('\\n\\n').map(par=>`<p>${escapeHtml(par)}</p>`).join('')}
         </div>
         <div class="detail-actions">
-          <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">在 Amazon 上查看类似产品</a>
-          <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
+          <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">View similar items on Amazon</a>
+          <button class="btn btn-ghost" onclick="closeDetail()">Close</button>
         </div>
       </div>
     `;
@@ -390,14 +423,14 @@
 
   loadMoreBtn.addEventListener('click', loadMore);
 
-  // 分类筛选
+  // Category filter
   const chips = document.querySelectorAll('.chip');
   chips.forEach(ch => {
     ch.addEventListener('click', ()=>{
       chips.forEach(c=>c.classList.remove('active'));
       ch.classList.add('active');
       const cat = ch.getAttribute('data-cat');
-      if(cat === '全部'){
+      if(cat === 'All'){
         currentList = PRODUCTS.slice();
       }else{
         currentList = PRODUCTS.filter(p=>p.category === cat);
@@ -408,7 +441,7 @@
     });
   });
 
-  // 搜索
+  // Search
   document.getElementById('searchBtn').addEventListener('click', ()=>{
     const q = document.getElementById('searchInput').value.trim().toLowerCase();
     doSearch(q);
@@ -436,7 +469,6 @@
 
   // init
   renderGrid();
-  // 暴露给 HTML
   window.openDetail = openDetail;
   window.closeDetail = closeDetail;
 </script>
