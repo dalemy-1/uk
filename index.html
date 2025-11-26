@@ -1,171 +1,107 @@
+#!/usr/bin/env python3
+# generate_multi_locale_site.py
+# 运行: python generate_multi_locale_site.py
+import os, random, html, zipfile, textwrap, shutil
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Amazon Affiliate Product Hub</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
- body { background:#111; color:#eee; font-family:Arial; margin:0; padding:0; }
- header { padding:20px; background:#000; text-align:center; font-size:24px; }
- .product { background:#1a1a1a; margin:20px; padding:20px; border-radius:12px; }
- .asin { color:#0af; }
- a.btn { display:inline-block; margin-top:10px; padding:10px 16px; background:#0af; color:#000; text-decoration:none; border-radius:6px; }
-</style>
-</head>
-<body>
-<header>Amazon Affiliate – Product List</header>
-<div>
+locales = {
+    "us": {"domain":"com","tag":"us1987-20","name":"United States"},
+    "uk": {"domain":"co.uk","tag":"replace_with_your_tag_uk","name":"United Kingdom"},
+    "de": {"domain":"de","tag":"replace_with_your_tag_de","name":"Germany"},
+    "fr": {"domain":"fr","tag":"replace_with_your_tag_fr","name":"France"},
+    "it": {"domain":"it","tag":"replace_with_your_tag_it","name":"Italy"},
+    "es": {"domain":"es","tag":"replace_with_your_tag_es","name":"Spain"},
+    "ca": {"domain":"ca","tag":"replace_with_your_tag_ca","name":"Canada"},
+    "jp": {"domain":"co.jp","tag":"replace_with_your_tag_jp","name":"Japan"}
+}
 
-<!-- Products -->
+def make_asin():
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    return "".join(random.choice(chars) for _ in range(10))
 
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FNRMQ6GQ</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FNRMQ6GQ" width="200" />
-        <p>Placeholder product description for B0FNRMQ6GQ. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FNRMQ6GQ/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FS7BLXR8</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FS7BLXR8" width="200" />
-        <p>Placeholder product description for B0FS7BLXR8. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FS7BLXR8/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B087TDDZJF</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B087TDDZJF" width="200" />
-        <p>Placeholder product description for B087TDDZJF. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B087TDDZJF/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FJ1D5C2C</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FJ1D5C2C" width="200" />
-        <p>Placeholder product description for B0FJ1D5C2C. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FJ1D5C2C/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0DZHCNHHL</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0DZHCNHHL" width="200" />
-        <p>Placeholder product description for B0DZHCNHHL. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0DZHCNHHL/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0DX1T4B5F</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0DX1T4B5F" width="200" />
-        <p>Placeholder product description for B0DX1T4B5F. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0DX1T4B5F/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0F8H6H3FG</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0F8H6H3FG" width="200" />
-        <p>Placeholder product description for B0F8H6H3FG. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0F8H6H3FG/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0DMQVRQ98</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0DMQVRQ98" width="200" />
-        <p>Placeholder product description for B0DMQVRQ98. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0DMQVRQ98/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FL22DW8N</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FL22DW8N" width="200" />
-        <p>Placeholder product description for B0FL22DW8N. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FL22DW8N/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FLX45THX</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FLX45THX" width="200" />
-        <p>Placeholder product description for B0FLX45THX. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FLX45THX/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0F8J3PRJY</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0F8J3PRJY" width="200" />
-        <p>Placeholder product description for B0F8J3PRJY. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0F8J3PRJY/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FLP2JPQ3</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FLP2JPQ3" width="200" />
-        <p>Placeholder product description for B0FLP2JPQ3. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FLP2JPQ3/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FNWR8VJV</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FNWR8VJV" width="200" />
-        <p>Placeholder product description for B0FNWR8VJV. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FNWR8VJV/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FLPRNHSP</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FLPRNHSP" width="200" />
-        <p>Placeholder product description for B0FLPRNHSP. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FLPRNHSP/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FSKTZ6BG</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FSKTZ6BG" width="200" />
-        <p>Placeholder product description for B0FSKTZ6BG. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FSKTZ6BG/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FLVXVVLX</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FLVXVVLX" width="200" />
-        <p>Placeholder product description for B0FLVXVVLX. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FLVXVVLX/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0DPN3J57K</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0DPN3J57K" width="200" />
-        <p>Placeholder product description for B0DPN3J57K. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0DPN3J57K/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FCS3Z42Q</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FCS3Z42Q" width="200" />
-        <p>Placeholder product description for B0FCS3Z42Q. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FCS3Z42Q/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FQBR1PV9</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FQBR1PV9" width="200" />
-        <p>Placeholder product description for B0FQBR1PV9. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FQBR1PV9/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FLPH2MHP</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FLPH2MHP" width="200" />
-        <p>Placeholder product description for B0FLPH2MHP. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FLPH2MHP/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-    <div class="product">
-        <h2>Product ASIN: <span class="asin">B0FJG5GK6K</span></h2>
-        <img src="https://via.placeholder.com/400x400?text=B0FJG5GK6K" width="200" />
-        <p>Placeholder product description for B0FJG5GK6K. Replace with real content later.</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0FJG5GK6K/?tag=us1987-20" target="_blank">View on Amazon</a>
-    </div>
-    
-</div>
-</body>
-</html>
+def make_review(asin, title):
+    parts = []
+    parts.append(f"{title}（ASIN: {asin}）是一款在其细分市场表现稳定的产品。本文从外观、核心功能、使用体验、优缺点与购买建议等方面进行介绍。")
+    parts.append("外观与做工方面，产品采用了合理设计，材质与拼接在同价位中表现良好，细节处处理得当，使用手感舒适。")
+    parts.append("功能与性能方面，满足日常需求，在日常测试下运行稳定。对于一般用户，其功能覆盖了常见使用场景。")
+    parts.append("使用体验上，操作直观，易上手。续航或耗材表现受使用强度影响，但在推荐的使用场景下具有良好稳定性。")
+    parts.append("优点：性价比高、上手容易、维护方便。缺点：对专业/发烧级用户可能不够极致。")
+    parts.append("总结建议：如果你追求稳定且性价比高的产品，此款值得考虑；若需要顶级性能，请参考更高端替代品。")
+    return "\n\n".join(parts)
+
+OUT = "multi_locale_affiliate_site"
+if os.path.exists(OUT):
+    shutil.rmtree(OUT)
+os.makedirs(OUT, exist_ok=True)
+
+readme_lines = [
+"# Multi-locale Amazon Affiliate Starter Site",
+"",
+"Locales included: " + ", ".join([f"{k.upper()} ({v['name']})" for k,v in locales.items()]),
+"",
+"IMPORTANT: Replace placeholder affiliate tags for non-US locales with your own Associate tags before publishing.",
+"",
+"Each locale folder contains:",
+"- index.html (product list)",
+"- products/*.html (individual product pages)",
+"- about.html, guides.html, disclosure.html, privacy.html",
+"",
+"Deployment: Upload one locale folder's contents to a GitHub Pages repo root and enable Pages.",
+"",
+]
+
+with open(os.path.join(OUT, "README.txt"), "w", encoding="utf-8") as f:
+    f.write("\n".join(readme_lines))
+
+for locale_key, meta in locales.items():
+    folder = os.path.join(OUT, locale_key)
+    os.makedirs(os.path.join(folder, "products"), exist_ok=True)
+
+    products = []
+    for i in range(5):  # 5 example products per locale (keeps package manageable)
+        asin = make_asin()
+        title = f"示例产品 {asin}"
+        img = f"https://images.amazon.com/images/P/{asin}._SL500_.jpg"
+        price = f"{random.randint(15,250)}.{random.choice(['99','49','00'])}"
+        review = make_review(asin, title)
+        products.append({"asin":asin,"title":title,"img":img,"price":price,"review":review})
+        tag = meta["tag"]
+        domain = meta["domain"]
+        prod_html = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>{html.escape(title)}</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:24px auto;color:#111">
+  <h1>{html.escape(title)}</h1>
+  <p><strong>ASIN:</strong> {asin} &nbsp; <strong>示例价格:</strong> ${price}</p>
+  <img src="{img}" alt="{html.escape(title)}" style="max-width:420px;border:1px solid #ddd;padding:6px;border-radius:6px"/>
+  <h2>评测摘要</h2>
+  <div>{html.escape(review).replace('\\n','<br/>')}</div>
+  <h2>购买</h2>
+  <p><a href="https://www.amazon.{domain}/dp/{asin}/?tag={tag}" target="_blank">在 Amazon ({meta['name']}) 查看并购买（含联盟链接）</a></p>
+  <p><a href="../index.html">返回产品列表</a></p>
+</body></html>"""
+        with open(os.path.join(folder, "products", f"{asin}.html"), "w", encoding="utf-8") as f:
+            f.write(prod_html)
+
+    list_items = ""
+    for p in products:
+        list_items += f"""<article style="padding:12px;border-bottom:1px solid #eee">
+  <img src="{p['img']}" alt="{p['title']}" style="width:140px;float:left;margin-right:12px"/>
+  <h2><a href="products/{p['asin']}.html">{p['title']}</a></h2>
+  <p>示例价格: ${p['price']}</p><div style="clear:both"></div></article>"""
+
+    index_html = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>深评 · {meta['name']} 产品中心</title></head>
+<body style="font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:20px auto;color:#111">
+<header><h1>深评 · {meta['name']} 站</h1><p>多站点示例：独立产品评测与推荐（用于 Amazon Associates 提交）</p></header>
+<nav><a href="about.html">关于</a> | <a href="guides.html">购买指南</a> | <a href="disclosure.html">免责声明</a> | <a href="privacy.html">隐私政策</a></nav>
+{list_items}
+<footer style="margin-top:30px;color:#666">© 2025 深评 · {meta['name']} — Amazon Associates Tag: {meta['tag']}</footer>
+</body></html>"""
+    with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
+        f.write(index_html)
+
+    with open(os.path.join(folder, "about.html"), "w", encoding="utf-8") as f:
+        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>关于 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>关于我们</h1><p>这是为 {meta['name']} 站点准备的示例关于页。我们是独立评测团队，致力于提供真实评测。</p><p><a href='index.html'>返回首页</a></p></body></html>")
+    with open(os.path.join(folder, "guides.html"), "w", encoding="utf-8") as f:
+        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>购买指南 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>购买指南</h1><p>选择产品时，请优先考虑用途、耐用性、售后与预算。</p><p><a href='index.html'>返回首页</a></p></body></html>")
+    with open(os.path.join(folder, "disclosure.html"), "w", encoding="utf-8") as f:
+        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>联盟声明 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>联盟声明 (Affiliate Disclosure)</h1><p>本站参与 Amazon Associates Program（{meta['name']}）。本站在合格购买中可能获得佣金，但不会影响评测结论。</p><p><a href='index.html'>返回首页</a></p></body></html>")
+    with open(os.path.join(folder, "privacy.html"), "w", encoding="utf-8") as f:
+        f.write(f"<
