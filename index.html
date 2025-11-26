@@ -1,107 +1,39 @@
-#!/usr/bin/env python3
-# generate_multi_locale_site.py
-# 运行: python generate_multi_locale_site.py
-import os, random, html, zipfile, textwrap, shutil
-
-locales = {
-    "us": {"domain":"com","tag":"us1987-20","name":"United States"},
-    "uk": {"domain":"co.uk","tag":"uk0e42-21","name":"United Kingdom"},
-    "de": {"domain":"de","tag":"de0831-21","name":"Germany"},
-    "fr": {"domain":"fr","tag":"alliance1980d-21","name":"France"},
-    "it": {"domain":"it","tag":"alliance19805-21","name":"Italy"},
-    "es": {"domain":"es","tag":"es072-21","name":"Spain"},
-    "ca": {"domain":"ca","tag":"alliance0dd-20","name":"Canada"},
-    "jp": {"domain":"co.jp","tag":"alliance1987-22","name":"Japan"}
-}
-
-def make_asin():
-    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    return "".join(random.choice(chars) for _ in range(10))
-
-def make_review(asin, title):
-    parts = []
-    parts.append(f"{title}（ASIN: {asin}）是一款在其细分市场表现稳定的产品。本文从外观、核心功能、使用体验、优缺点与购买建议等方面进行介绍。")
-    parts.append("外观与做工方面，产品采用了合理设计，材质与拼接在同价位中表现良好，细节处处理得当，使用手感舒适。")
-    parts.append("功能与性能方面，满足日常需求，在日常测试下运行稳定。对于一般用户，其功能覆盖了常见使用场景。")
-    parts.append("使用体验上，操作直观，易上手。续航或耗材表现受使用强度影响，但在推荐的使用场景下具有良好稳定性。")
-    parts.append("优点：性价比高、上手容易、维护方便。缺点：对专业/发烧级用户可能不够极致。")
-    parts.append("总结建议：如果你追求稳定且性价比高的产品，此款值得考虑；若需要顶级性能，请参考更高端替代品。")
-    return "\n\n".join(parts)
-
-OUT = "multi_locale_affiliate_site"
-if os.path.exists(OUT):
-    shutil.rmtree(OUT)
-os.makedirs(OUT, exist_ok=True)
-
-readme_lines = [
-"# Multi-locale Amazon Affiliate Starter Site",
-"",
-"Locales included: " + ", ".join([f"{k.upper()} ({v['name']})" for k,v in locales.items()]),
-"",
-"IMPORTANT: Replace placeholder affiliate tags for non-US locales with your own Associate tags before publishing.",
-"",
-"Each locale folder contains:",
-"- index.html (product list)",
-"- products/*.html (individual product pages)",
-"- about.html, guides.html, disclosure.html, privacy.html",
-"",
-"Deployment: Upload one locale folder's contents to a GitHub Pages repo root and enable Pages.",
-"",
-]
-
-with open(os.path.join(OUT, "README.txt"), "w", encoding="utf-8") as f:
-    f.write("\n".join(readme_lines))
-
-for locale_key, meta in locales.items():
-    folder = os.path.join(OUT, locale_key)
-    os.makedirs(os.path.join(folder, "products"), exist_ok=True)
-
-    products = []
-    for i in range(5):  # 5 example products per locale (keeps package manageable)
-        asin = make_asin()
-        title = f"示例产品 {asin}"
-        img = f"https://images.amazon.com/images/P/{asin}._SL500_.jpg"
-        price = f"{random.randint(15,250)}.{random.choice(['99','49','00'])}"
-        review = make_review(asin, title)
-        products.append({"asin":asin,"title":title,"img":img,"price":price,"review":review})
-        tag = meta["tag"]
-        domain = meta["domain"]
-        prod_html = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>{html.escape(title)}</title></head>
-<body style="font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:24px auto;color:#111">
-  <h1>{html.escape(title)}</h1>
-  <p><strong>ASIN:</strong> {asin} &nbsp; <strong>示例价格:</strong> ${price}</p>
-  <img src="{img}" alt="{html.escape(title)}" style="max-width:420px;border:1px solid #ddd;padding:6px;border-radius:6px"/>
-  <h2>评测摘要</h2>
-  <div>{html.escape(review).replace('\\n','<br/>')}</div>
-  <h2>购买</h2>
-  <p><a href="https://www.amazon.{domain}/dp/{asin}/?tag={tag}" target="_blank">在 Amazon ({meta['name']}) 查看并购买（含联盟链接）</a></p>
-  <p><a href="../index.html">返回产品列表</a></p>
-</body></html>"""
-        with open(os.path.join(folder, "products", f"{asin}.html"), "w", encoding="utf-8") as f:
-            f.write(prod_html)
-
-    list_items = ""
-    for p in products:
-        list_items += f"""<article style="padding:12px;border-bottom:1px solid #eee">
-  <img src="{p['img']}" alt="{p['title']}" style="width:140px;float:left;margin-right:12px"/>
-  <h2><a href="products/{p['asin']}.html">{p['title']}</a></h2>
-  <p>示例价格: ${p['price']}</p><div style="clear:both"></div></article>"""
-
-    index_html = f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>深评 · {meta['name']} 产品中心</title></head>
-<body style="font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:20px auto;color:#111">
-<header><h1>深评 · {meta['name']} 站</h1><p>多站点示例：独立产品评测与推荐（用于 Amazon Associates 提交）</p></header>
-<nav><a href="about.html">关于</a> | <a href="guides.html">购买指南</a> | <a href="disclosure.html">免责声明</a> | <a href="privacy.html">隐私政策</a></nav>
-{list_items}
-<footer style="margin-top:30px;color:#666">© 2025 深评 · {meta['name']} — Amazon Associates Tag: {meta['tag']}</footer>
-</body></html>"""
-    with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
-        f.write(index_html)
-
-    with open(os.path.join(folder, "about.html"), "w", encoding="utf-8") as f:
-        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>关于 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>关于我们</h1><p>这是为 {meta['name']} 站点准备的示例关于页。我们是独立评测团队，致力于提供真实评测。</p><p><a href='index.html'>返回首页</a></p></body></html>")
-    with open(os.path.join(folder, "guides.html"), "w", encoding="utf-8") as f:
-        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>购买指南 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>购买指南</h1><p>选择产品时，请优先考虑用途、耐用性、售后与预算。</p><p><a href='index.html'>返回首页</a></p></body></html>")
-    with open(os.path.join(folder, "disclosure.html"), "w", encoding="utf-8") as f:
-        f.write(f"<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'><title>联盟声明 - {meta['name']}</title></head><body style='font-family:Arial;max-width:900px;margin:24px auto'><h1>联盟声明 (Affiliate Disclosure)</h1><p>本站参与 Amazon Associates Program（{meta['name']}）。本站在合格购买中可能获得佣金，但不会影响评测结论。</p><p><a href='index.html'>返回首页</a></p></body></html>")
-    with open(os.path.join(folder, "privacy.html"), "w", encoding="utf-8") as f:
-        f.write(f"<
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>深评 · 省心好物 — 专业评测与购买指南</title>
+  <meta name="description" content="深评 · 省心好物 — 独立测评、对比与精选推荐。参与 Amazon Associates Program。"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    /* ====== Reset & Variables ====== */
+    :root{
+      --bg:#0b0f14; --card:#0f1720; --muted:#98a0aa;
+      --accent:#ffb86b; --accent-2:#ff7a59; --surface:#0d1116;
+      --maxw:1200px; --radius:12px;
+      --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--font-sans);background:linear-gradient(180deg,#06080a 0,#0b0f14 100%);color:#e7eef6;line-height:1.6}
+    a{color:inherit}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
+    header{padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{font-weight:800;font-size:1.25rem;color:var(--accent)}
+    nav{margin-top:12px}
+    nav a{color:var(--muted);margin-right:14px;text-decoration:none;font-weight:600}
+    /* hero */
+    .hero{display:flex;gap:18px;align-items:center;margin:20px 0}
+    .hero-left{flex:1}
+    .hero-right{width:320px}
+    .hero h1{margin:0;font-size:1.6rem}
+    .hero p{margin:8px 0;color:var(--muted)}
+    .chip{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);margin-right:8px;margin-top:8px;cursor:pointer}
+    /* search */
+    .search{display:flex;gap:8px;margin-top:12px}
+    .search input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e7eef6}
+    .search button{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:10px 12px;border-radius:10px;color:#111;font-weight:800;cursor:pointer}
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-
