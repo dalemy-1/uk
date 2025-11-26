@@ -1,89 +1,109 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"/>
-  <title>深评 · 省心好物 — 专业 Amazon 产品评测与推荐</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="深评 · 省心好物：专业 Amazon 产品评测、购买指南与精选推荐。本站为 Amazon Associates 成员，部分链接为联盟链接。">
+  <meta charset="utf-8" />
+  <title>深评 · 省心好物 — 专业 Amazon 产品评测与精选推荐</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="深评 · 省心好物：以杂志式编辑风格呈现 Amazon 产品评测与购买指南。本站参与 Amazon Associates Program，部分链接为联盟链接。" />
   <style>
     :root{
-      --bg:#05070b;
-      --bg2:#0b1017;
-      --card:#111827;
-      --muted:#9ca3af;
-      --accent:#fbbf24;
-      --accent2:#f97316;
-      --radius:14px;
+      --bg:#f5f5f5;
+      --ink:#111827;
+      --muted:#6b7280;
+      --accent:#f97316;
+      --accent-soft:#ffedd5;
+      --border:#e5e7eb;
+      --card:#ffffff;
       --maxw:1200px;
+      --radius:14px;
       --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--font);background:radial-gradient(circle at top,#111827 0,var(--bg) 55%,#020617 100%);color:#e5e7eb;line-height:1.6}
+    body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.7}
     a{text-decoration:none;color:inherit}
-    header{border-bottom:1px solid rgba(148,163,184,0.2);backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(15,23,42,0.9),rgba(15,23,42,0.6));position:sticky;top:0;z-index:20}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:16px 20px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{font-weight:800;font-size:1.3rem;color:var(--accent)}
-    .tagline{color:var(--muted);font-size:.92rem}
-    nav{margin-top:10px;font-size:.95rem}
-    nav a{margin-right:14px;color:var(--muted);font-weight:600}
-    nav a:hover{color:#e5e7eb}
-    main{max-width:var(--maxw);margin:0 auto;padding:18px 20px 40px}
-    .hero{display:grid;grid-template-columns:3fr 2fr;gap:18px;margin-top:10px}
+    header{background:#ffffff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:14px 20px}
+    .brand-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-size:1.4rem;font-weight:800;color:var(--accent)}
+    .tagline{font-size:.9rem;color:var(--muted)}
+    nav{margin-top:8px;font-size:.9rem}
+    nav a{margin-right:16px;color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--ink)}
+    main{max-width:var(--maxw);margin:0 auto;padding:20px}
+    /* hero editorial */
+    .hero{display:grid;grid-template-columns:3fr 2fr;gap:18px}
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
-    .hero-card{background:linear-gradient(135deg,#020617,#020617 20%,#111827 100%);border-radius:var(--radius);padding:18px;border:1px solid rgba(148,163,184,0.25);box-shadow:0 18px 45px rgba(15,23,42,0.85)}
-    .hero h1{font-size:1.7rem;margin-bottom:8px}
-    .hero p{color:var(--muted);font-size:.98rem}
-    .badge-row{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
-    .badge{padding:4px 10px;border-radius:999px;border:1px solid rgba(148,163,184,0.45);font-size:.82rem;color:var(--muted)}
-    .badge strong{color:#e5e7eb}
-    .search{margin-top:14px;display:flex;gap:8px}
-    .search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid rgba(148,163,184,0.4);background:#020617;color:#e5e7eb;font-size:.95rem}
-    .search button{background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;border-radius:10px;padding:10px 16px;font-weight:700;color:#111;cursor:pointer}
-    .info-box{background:#020617;border-radius:var(--radius);padding:14px;border:1px solid rgba(148,163,184,0.35);font-size:.9rem;color:var(--muted)}
-    .chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
-    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(148,163,184,0.45);font-size:.85rem;color:var(--muted);cursor:pointer}
-    .chip.active{background:rgba(250,204,21,0.12);border-color:var(--accent);color:#facc15}
-    h2.section-title{margin-top:24px;font-size:1.25rem}
-    .sub{color:var(--muted);font-size:.9rem;margin-top:4px}
+    .hero-main{background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(15,23,42,0.08)}
+    .hero-main h1{font-size:1.8rem;margin-bottom:8px}
+    .hero-main p{font-size:.98rem;color:var(--muted)}
+    .hero-meta{margin-top:10px;font-size:.85rem;color:var(--muted)}
+    .hero-meta span{margin-right:12px}
+    .hero-side{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid var(--border)}
+    .hero-side h2{font-size:1.05rem;margin-bottom:4px}
+    .hero-side ul{margin-left:18px;margin-top:8px;font-size:.9rem;color:var(--muted)}
+    .search{margin-top:16px;display:flex;gap:8px}
+    .search input{flex:1;padding:9px 11px;border-radius:999px;border:1px solid var(--border);font-size:.9rem}
+    .search button{border:none;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.9rem;padding:9px 14px;cursor:pointer}
+    .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:5px 11px;border-radius:999px;border:1px solid var(--border);font-size:.82rem;color:var(--muted);cursor:pointer;background:#fff}
+    .chip.active{background:var(--accent-soft);border-color:var(--accent);color:#c2410c}
+    /* list */
+    .list-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:26px}
+    .list-head h2{font-size:1.25rem}
+    .list-head .sub{font-size:.9rem;color:var(--muted);margin-top:4px}
+    .count{font-size:.85rem;color:var(--muted)}
     .grid{margin-top:14px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     @media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(15,23,42,0.9);box-shadow:0 12px 30px rgba(15,23,42,0.9)}
-    .thumb{height:190px;border-radius:10px;background:#020617;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 20px rgba(15,23,42,0.06)}
+    .thumb{height:180px;border-radius:10px;overflow:hidden}
     .thumb img{width:100%;height:100%;object-fit:cover}
-    .cat{font-size:.82rem;color:var(--muted)}
+    .cat{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
     .title{font-size:1rem;font-weight:600}
-    .desc{font-size:.9rem;color:var(--muted);min-height:3.4em}
+    .snippet{font-size:.9rem;color:var(--muted);min-height:3.2em}
     .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-    .price{color:var(--accent);font-weight:700;font-size:.98rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:10px;font-size:.88rem;font-weight:700;border:none;cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111}
-    .btn-ghost{background:transparent;border:1px solid rgba(148,163,184,0.5);color:var(--muted)}
-    .count{color:var(--muted);font-size:.9rem;margin-top:6px}
-    .detail{margin-top:22px;display:none}
-    .detail-inner{background:var(--bg2);border-radius:var(--radius);padding:18px;border:1px solid rgba(148,163,184,0.4);display:grid;grid-template-columns:320px 1fr;gap:18px}
+    .price{font-size:.95rem;font-weight:700;color:#16a34a}
+    .btn-row{display:flex;gap:8px}
+    .btn{border-radius:999px;font-size:.85rem;padding:7px 12px;border:1px solid var(--border);cursor:pointer;background:#fff}
+    .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn-primary:hover{background:#ea580c}
+    .btn-ghost{background:#fff;color:var(--muted)}
+    .btn-ghost:hover{background:#f3f4f6}
+    .load-wrap{text-align:center;margin-top:16px}
+    .load-wrap button{border-radius:999px;padding:8px 16px;border:1px solid var(--border);background:#fff;font-size:.9rem;cursor:pointer}
+    /* detail editorial */
+    .detail{margin-top:26px;display:none}
+    .detail-inner{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px;display:grid;grid-template-columns:320px 1fr;gap:18px;box-shadow:0 10px 28px rgba(15,23,42,0.08)}
     @media(max-width:900px){.detail-inner{grid-template-columns:1fr}}
-    .detail h3{margin-bottom:6px}
-    .pill-row{margin:8px 0;display:flex;flex-wrap:wrap;gap:8px;font-size:.85rem}
-    .pill{padding:3px 8px;border-radius:999px;background:#020617;color:var(--muted)}
-    .long{font-size:.93rem;color:#d1d5db;white-space:pre-line}
-    footer{border-top:1px solid rgba(148,163,184,0.3);margin-top:30px}
-    footer .wrap{padding-top:18px;padding-bottom:22px;text-align:center;font-size:.86rem;color:var(--muted)}
-    .linkish{color:var(--accent);cursor:pointer}
-    .section-box{margin-top:22px;background:var(--bg2);border-radius:var(--radius);padding:18px;border:1px solid rgba(148,163,184,0.4);font-size:.93rem;color:#e5e7eb}
-    .section-box h2{margin-bottom:8px;font-size:1.15rem}
-    .section-box p{margin-bottom:8px;color:var(--muted)}
-    .section-box ul{margin-left:18px;margin-bottom:8px}
-    .section-box li{margin-bottom:4px}
+    .detail-inner img{width:100%;border-radius:10px}
+    .detail-title{font-size:1.3rem;font-weight:700;margin-bottom:4px}
+    .detail-meta{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;font-size:.78rem;margin-bottom:12px}
+    .pill{padding:4px 9px;border-radius:999px;background:#f3f4f6;color:#4b5563}
+    .detail-body p{margin-bottom:8px;font-size:.93rem;color:#374151}
+    .detail-actions{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px}
+    /* sections */
+    .section{margin-top:26px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:18px;font-size:.93rem;color:#374151}
+    .section h2{font-size:1.15rem;margin-bottom:6px}
+    .section p{margin-bottom:8px}
+    .section ul{margin-left:18px;margin-bottom:6px}
+    .section li{margin-bottom:4px}
+    footer{border-top:1px solid var(--border);margin-top:28px}
+    footer .wrap{padding-top:16px;padding-bottom:18px;text-align:center;font-size:.85rem;color:var(--muted)}
+    @media(max-width:600px){
+      .brand-row{flex-direction:column;align-items:flex-start}
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <div class="brand">
-      <div class="logo">深评 · 省心好物</div>
-      <div class="tagline">专业 Amazon 产品评测 · 独立观点 · 非官方站点</div>
+    <div class="brand-row">
+      <div>
+        <div class="logo">深评 · 省心好物</div>
+        <div class="tagline">以编辑部视角撰写的 Amazon 产品评测与购买建议 · 非 Amazon 官方网站</div>
+      </div>
+      <div style="font-size:.8rem;color:var(--muted)">专注：电子 · 家居 · 厨房 · 户外 · 影音 · 车载 · 办公 · 运动</div>
     </div>
     <nav>
       <a href="#home">首页</a>
@@ -96,17 +116,18 @@
 </header>
 
 <main class="wrap">
-  <section id="home" class="hero" aria-label="网站介绍与搜索">
-    <div class="hero-card">
-      <h1>真实可参考的 Amazon 产品评测与推荐</h1>
-      <p>我们专注于日常生活中最常见的家居、电子、户外与厨房产品，从体验、优缺点与适用场景三个维度给出清晰建议。本站为 Amazon Associates Program 成员，部分链接为联盟链接。</p>
-      <div class="badge-row">
-        <div class="badge"><strong>100+</strong> 条精选产品条目</div>
-        <div class="badge"><strong>独立撰写</strong> 评测摘要</div>
-        <div class="badge">适合 Amazon 联盟审核的结构</div>
+  <!-- Hero editorial style -->
+  <section id="home" class="hero" aria-label="网站介绍">
+    <article class="hero-main">
+      <h1>用编辑部视角，帮你过滤掉 80% 不值得看的产品。</h1>
+      <p>我们以“真实使用场景 + 优缺点清单 + 购买建议”的方式撰写评测摘要，而不是简单复制商品文案。页面上展示的产品为示例结构，展示如何合规、安全地呈现 Amazon 联盟链接与内容布局。</p>
+      <div class="hero-meta">
+        <span>· 覆盖 8 大使用场景</span>
+        <span>· 100 条产品条目</span>
+        <span>· 每条都附带购买建议</span>
       </div>
-      <div class="search">
-        <input id="searchInput" placeholder="搜索产品名称、类别或 ASIN，例如：耳机 / 炸锅 / B0DEMO0001">
+      <div class="search" role="search">
+        <input id="searchInput" placeholder="搜索产品名称、类别或关键字，例如：耳机、露营、办公灯" />
         <button id="searchBtn">搜索</button>
       </div>
       <div class="chips" aria-label="分类筛选">
@@ -120,158 +141,173 @@
         <div class="chip" data-cat="办公">办公</div>
         <div class="chip" data-cat="运动">运动</div>
       </div>
-    </div>
-    <div class="info-box">
-      <strong>重要说明（Affiliate Disclosure）</strong>
-      <p>本网站参与 Amazon Services LLC Associates Program。通过本网站的 Amazon 链接进行的合格购买，我们可能会获得佣金，但这不会增加你的支付价格，也不会影响我们的评测结论。</p>
-      <p>我们建议你：先阅读评测内容，再根据自身预算与使用场景进行选择，而不是仅仅根据价格或折扣作决定。</p>
-    </div>
+    </article>
+    <aside class="hero-side">
+      <h2>如何阅读这些评测？</h2>
+      <p style="font-size:.9rem;color:#4b5563;">每条产品都包含 3 个核心信息：<strong>产品定位</strong>、<strong>优缺点</strong> 和 <strong>推荐人群</strong>。你可以把本页面当作“编辑精选清单”，用来缩小选择范围。</p>
+      <ul>
+        <li>先按类别筛选，浏览合适的使用场景；</li>
+        <li>点击“阅读评测”，查看详细分析；</li>
+        <li>若确实感兴趣，再点击按钮前往 Amazon 了解更多。</li>
+      </ul>
+      <p style="font-size:.85rem;color:var(--muted);margin-top:4px;">提示：本页面为结构示例，不代表真实库存与价格，实际信息以 Amazon 页面为准。</p>
+    </aside>
   </section>
 
+  <!-- List -->
   <section aria-label="产品列表">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:22px">
+    <div class="list-head">
       <div>
-        <h2 class="section-title">精选产品推荐列表</h2>
-        <div class="sub">所有产品为示例产品，用于展示评测与推荐结构，方便 Amazon 联盟审核。</div>
+        <h2>精选产品推荐列表</h2>
+        <div class="sub">示例站点：用于展示 Amazon 联盟网站的内容与结构设计，方便联盟审核。</div>
       </div>
       <div class="count" id="countInfo"></div>
     </div>
     <div class="grid" id="productGrid"></div>
-    <div style="text-align:center;margin-top:14px">
-      <button class="btn btn-ghost" id="loadMoreBtn">加载更多</button>
+    <div class="load-wrap">
+      <button id="loadMoreBtn">加载更多产品</button>
     </div>
   </section>
 
+  <!-- Detail -->
   <section class="detail" id="detailSection" aria-label="产品详情">
     <div class="detail-inner" id="detailInner"></div>
   </section>
 
-  <section id="guides" class="section-box">
-    <h2>购买指南：如何用更少时间做出更好的选择？</h2>
-    <p>我们建议在购买任何产品前，先回答三个问题：</p>
+  <!-- Editorial sections -->
+  <section id="guides" class="section">
+    <h2>购买指南：如何快速判断一款产品是否值得买？</h2>
+    <p>无论是耳机、空气炸锅还是露营装备，我们建议你在下单前先回答三个问题：</p>
     <ul>
-      <li><strong>实际使用场景是什么？</strong> 通勤、家用、专业工作还是户外旅行？</li>
-      <li><strong>预算范围是多少？</strong> 能接受的价格区间决定了你应该看哪一档产品。</li>
-      <li><strong>最在意哪三个指标？</strong> 例如：静音、续航、易清洁、重量、保修等。</li>
+      <li><strong>我会在什么场景下使用它？</strong> 家里、公司、户外，还是旅行途中？</li>
+      <li><strong>我愿意为这个场景付出多大的预算？</strong> 这决定了应该看入门款还是中高端款。</li>
+      <li><strong>我最在意哪 2–3 个指标？</strong> 例如：噪音、续航、重量、占空间、清洁难度等。</li>
     </ul>
-    <p>本网站的每条产品评测，都会尽量围绕这些问题给出清晰建议，帮助你快速筛掉不合适的选项。</p>
+    <p>本页面的每条评测都会围绕“定位、优缺点与推荐人群”展开，帮助你在 3–5 分钟内完成一次有效筛选，而不是在商品列表中无休止横跳。</p>
   </section>
 
-  <section id="about" class="section-box">
+  <section id="about" class="section">
     <h2>关于我们</h2>
-    <p>“深评 · 省心好物” 是一个独立运作的产品评测网站，不隶属于 Amazon 或任何品牌官方。我们通过公开信息、产品参数与用户反馈整理出结构化的评测摘要，目的是帮你在短时间内理解产品优缺点。</p>
-    <p>在可行的情况下，我们会优先参考真实用户长期使用体验，并在合适位置标注明显的优点和缺点，以便你在几分钟内完成初步决策。</p>
+    <p>“深评 · 省心好物” 是一个独立运营的内容站点，不隶属于 Amazon 或任何品牌官方。我们通过整理公开资料、用户口碑与产品参数，撰写出适合大多数用户阅读的评测摘要，侧重易读性与决策支持。</p>
+    <p>我们的目标不是给出“绝对正确”的结论，而是帮你快速识别：一款产品大致适合哪些人、不适合哪些人，在什么预算下它算“值”，什么情况下应该换其它备选。</p>
   </section>
 
-  <section id="privacy" class="section-box">
-    <h2>隐私政策（简版）</h2>
-    <p>本网站可能使用 Cookie 与第三方分析工具（例如访问统计）来改善内容与体验。这些数据仅用于整体流量分析，而不会用于识别具体个人身份。</p>
-    <p>我们不会出售或出租访问者的个人信息。如未来接入更多第三方工具，本页面会进行相应更新。</p>
+  <section id="privacy" class="section">
+    <h2>隐私政策（简要说明）</h2>
+    <p>本网站可能使用 Cookie 或第三方分析工具（例如访问统计）来了解整体流量趋势，以便优化内容结构与排版。我们不会主动收集可识别个人身份的信息，更不会出售或出租访问者数据。</p>
+    <p>如未来接入邮件订阅或表单，我们会在对应功能旁提供单独说明，并尊重你的退订与删除权利。</p>
   </section>
 
-  <section id="disclosure" class="section-box">
+  <section id="disclosure" class="section">
     <h2>联盟披露（Affiliate Disclosure）</h2>
-    <p>本网站参与 Amazon Services LLC Associates Program 及相关国际分站的联盟项目。我们在文章或产品卡片中放置的部分链接为联盟链接，你通过这些链接进行“合格购买”时，我们可能会获得一定比例的佣金。</p>
-    <p>重要的是：这不会增加你的购买价格，也不会改变我们对产品的评价。我们不会因为佣金而刻意推荐明显不合适的产品。</p>
+    <p>本网站参与 Amazon Services LLC Associates Program 及其关联分站的联盟项目。当你点击本页中的部分链接并在 Amazon 完成合格购买时，我们可能会获得一定比例的佣金。</p>
+    <p>这不会增加你的购买成本，也不会改变我们对产品优缺点的描述。你可以把这些链接理解为“在支持本站持续运营的同时完成正常购物”的一种方式。</p>
   </section>
-
 </main>
 
 <footer>
   <div class="wrap">
     © <span id="year"></span> 深评 · 省心好物 · Amazon Associates ID: <span id="tagText"></span><br/>
-    本站为示例性质的评测与推荐结构，用于演示如何以合规方式展示 Amazon 联盟链接。
+    本站为示例性质的评测与推荐结构，用于展示如何以合规方式构建 Amazon 联盟网站。
   </div>
 </footer>
 
 <script>
-  // ===== 配置：你的联盟 ID 和站点域名 =====
-  const AFFILIATE_TAG = 'us1987-20'; // 可以根据国家站点替换
-  const AMAZON_DOMAIN = 'com';       // us: com, uk: co.uk, de: de 等
-
+  // ========= 基本配置 =========
+  const AFFILIATE_TAG = 'us1987-20';   // 你的联盟 ID
+  const AMAZON_DOMAIN = 'com';         // 国家站：US: com, UK: co.uk, DE: de, JP: co.jp 等
   document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('tagText').textContent = AFFILIATE_TAG;
 
-  // ===== 生成 100 个示例产品数据（随机但结构统一） =====
+  // ========= 产品数据生成（100 条示例） =========
   const CATEGORIES = ['电子','家居','厨房','户外','影音','车载','办公','运动'];
 
+  const TITLE_TEMPLATES = {
+    '电子':'通勤与日常使用电子设备',
+    '家居':'提升居家舒适度的生活好物',
+    '厨房':'简化备菜和烹饪流程的厨房工具',
+    '户外':'适合周末出行与露营使用的装备',
+    '影音':'用于音乐、观影与娱乐的影音产品',
+    '车载':'改善通勤体验的车载小配件',
+    '办公':'提升效率的办公与学习工具',
+    '运动':'辅助日常锻炼与恢复的运动用品'
+  };
+
   function makeAsin(i){
-    // 简单生成演示用 ASIN，避免真实品牌商标纠纷
-    return 'B0DEMO' + String(i).padStart(4,'0');
+    return 'B0DEMO' + String(i).padStart(4,'0'); // 示例 ASIN，不对应真实商品
   }
 
   function makeTitle(i,cat){
-    const base = {
-      '电子':'日常通勤电子好物',
-      '家居':'家居收纳与生活小物',
-      '厨房':'厨房实用工具',
-      '户外':'户外与露营装备',
-      '影音':'影音娱乐与音箱耳机',
-      '车载':'车载与行车配件',
-      '办公':'办公与学习工具',
-      '运动':'运动与健康辅助'
-    }[cat] || '精选好物';
-    return `${base} #${i}`;
+    return TITLE_TEMPLATES[cat] + ' · 第 ' + i + ' 款';
   }
 
   function makePrice(i){
-    const base = 18 + (i % 40);
+    const base = 18 + (i % 45);        // 18–62
     return (base + 0.99).toFixed(2);
   }
 
   function makeImg(i){
-    return `https://via.placeholder.com/600x400.png?text=Product+${i}`;
+    // 稳定可用占位图：不会触发版权与跨域问题
+    return 'https://picsum.photos/seed/prod' + i + '/800/600';
   }
 
-  function makeReview(i,cat){
+  function makeReview(product){
+    const cat = product.category;
     const scene = {
-      '电子':'日常通勤、居家娱乐以及偶尔的出差旅行',
-      '家居':'卧室、客厅与书房等家居场景',
-      '厨房':'日常烹饪、简易烤焙与备菜处理',
-      '户外':'短途露营、城市周边出行以及应急备用',
-      '影音':'影音娱乐、音乐播放以及基础观影使用',
-      '车载':'日常通勤与长途自驾出行',
-      '办公':'居家办公、在线学习与轻度创作',
-      '运动':'日常健身、轻量训练与体态改善'
+      '电子':'日常通勤、在家影音娱乐以及偶尔出差的使用场景',
+      '家居':'卧室、客厅与书房等家庭空间，希望整体更舒适、更易打理的用户',
+      '厨房':'日常备菜烹饪、简易烤焙与偶尔的小聚会',
+      '户外':'短途露营、城市周边出行以及应急备用场景',
+      '影音':'音乐播放、电影追剧与背景音营造',
+      '车载':'日常通勤、城际出行以及长途自驾',
+      '办公':'在家或办公室的长时间电脑工作与阅读学习',
+      '运动':'日常健身、居家训练与体态管理'
     }[cat] || '日常使用场景';
 
-    return (
-`【产品定位】
-这款产品主要面向需要${scene}的普通用户。整体设计思路并不是追求极端参数，而是在“好用、稳定、价格合理”之间寻求平衡。对于刚开始接触该类产品的用户来说，它更像是一款“不会出大错的稳妥选择”。
+    const intro =
+      `【产品定位】\n` +
+      `这款产品被设计成一款适合${scene}的实用型选择。它的目标并不是在某一个单项参数上“碾压同类”，而是在功能完整度、易用性与价格之间找到一个相对平衡的点。对于刚接触该类产品、或不想花太多时间做复杂比较的用户来说，它属于那种“买来就能用”的稳妥方案。`;
 
-【外观与做工】
-从外观设计来看，本产品采用相对中性的配色与线条，既不会过于张扬，也不显得廉价。主要材质多为常见工程塑料或金属与塑料的组合，接口与转轴处的做工在这个价位中属于正常水平。对于日常拿取、收纳与频繁搬动来说，不需要刻意小心翼翼使用，但也不建议粗暴对待。
+    const build =
+      `【外观与做工】\n` +
+      `从外观观感上看，整体线条偏向简洁，颜色和材质不会太张扬，放在家里或办公室都比较容易融入环境。主要结构使用了常见的工程塑料或金属框架，在同价位产品中做工处于正常偏上的水平。日常搬动、收纳或携带都不需要特别小心，但也不建议高强度摔打。`;
 
-【功能与使用体验】
-在实际体验中，我们更关注“易上手程度”和“稳定性”两个维度。本产品在这些方面表现相对可靠：说明逻辑清晰，无需反复阅读说明书即可完成大部分操作；在连续使用的过程中，没有出现明显的异常发热或功能失效情况。与同价位产品相比，它的功能覆盖面相对全面，但不会有特别夸张的高级功能。
+    const use =
+      `【功能与使用体验】\n` +
+      `在实际体验中，我们更关注“好不好上手”和“在典型场景下是否稳定”。这款产品的操作逻辑相对直观，大多数人不看说明书也能在几分钟内摸清主要功能。长时间连续使用时，没有遇到明显异常的过热或性能骤降情况。与更高价位的专业型号相比，它在细节调校和拓展功能上略显朴素，但对目标人群来说已经足够。`;
 
-【优点与不足】
-优点主要体现在三个方面：一是价格与配置比较匹配，适合预算有限又想体验该品类的用户；二是参数设计偏向实用，适合“买来就直接用”的人群；三是维护成本较低，清洁、收纳和日常保养都比较简单。相对的，不足也比较明确：对于追求极致性能、需要专业参数和高端材质的用户，这款产品的可玩性与上限都不算高。
+    const prosCons =
+      `【优点与不足】\n` +
+      `优点方面，首先是整体性价比较高：在合理的预算下能覆盖核心需求；其次是维护与清洁相对轻松，不需要额外购买复杂耗材；再次是学习成本低，对家人或同事而言也容易上手。对应的不足也比较明确：如果你已经是重度玩家或专业用户，可能会觉得可玩空间有限，细节设定和极限性能不够“极致”。`;
 
-【适合人群与购买建议】
-整体来看，这款产品比较适合第一次尝试该类产品、或对品牌溢价敏感、希望用合理预算换取稳定体验的用户。如果你正在为日常使用寻找一款“简单、可靠、不折腾”的产品，它可以作为优先考虑的选项；如果你已经有较多使用经验、并希望在某一细分指标上追求极致，则可以把它当作参考基线，对比更高阶产品。`
-    );
+    const advice =
+      `【推荐人群与购买建议】\n` +
+      `综合考虑价格、功能与使用门槛，这款产品更适合第一次尝试该品类、或者追求“省事、省心”的用户。如果你只希望在日常生活中多一点便利，而不打算围绕它做深度折腾，它会是一个相对安全的选择；如果你已经明确知道自己在寻找非常专业的设备，不妨把它当作参考基线，并将更高端的型号列入备选清单，通过对比找到真正适合自己的那一款。`;
+
+    return [intro, build, use, prosCons, advice].join('\n\n');
+  }
+
+  function makeSnippet(review){
+    return review.slice(0, 90) + '...';
   }
 
   const PRODUCTS = [];
   for(let i=1;i<=100;i++){
     const cat = CATEGORIES[(i-1) % CATEGORIES.length];
     const asin = makeAsin(i);
-    PRODUCTS.push({
-      id:i,
-      asin,
-      category:cat,
-      title:makeTitle(i,cat),
-      price:makePrice(i),
-      img:makeImg(i),
-      review:makeReview(i,cat)
-    });
+    const title = makeTitle(i,cat);
+    const price = makePrice(i);
+    const img = makeImg(i);
+    const base = {id:i,asin,category:cat,title,price,img};
+    base.review = makeReview(base);
+    base.snippet = makeSnippet(base.review);
+    PRODUCTS.push(base);
   }
 
-  // ===== 渲染逻辑 =====
-  let shown = 12; // 初始展示数量
+  // ========= 渲染逻辑 =========
+  let currentList = PRODUCTS.slice();
+  let shown = 12;
   const perPage = 12;
-  let currentList = PRODUCTS.slice(); // 当前过滤结果
 
   const gridEl = document.getElementById('productGrid');
   const countEl = document.getElementById('countInfo');
@@ -279,53 +315,62 @@
   const detailInner = document.getElementById('detailInner');
   const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-  function affiliateUrl(asin){
-    return `https://www.amazon.${AMAZON_DOMAIN}/dp/${asin}/?tag=${AFFILIATE_TAG}`;
+  function affiliateUrl(product){
+    // 使用搜索链接，保证页面存在，避免因为示例 ASIN 404
+    const q = encodeURIComponent(product.category + ' ' + product.title);
+    return `https://www.amazon.${AMAZON_DOMAIN}/s?k=${q}&tag=${AFFILIATE_TAG}`;
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, m=>(
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
+    ));
   }
 
   function renderGrid(){
     const toShow = currentList.slice(0, shown);
-    countEl.textContent = `当前显示 ${toShow.length} / ${currentList.length} 条产品（总共 100 条示例）`;
-    gridEl.innerHTML = toShow.map(p=>`
+    countEl.textContent = `当前展示 ${toShow.length} / ${currentList.length} 条产品（总共 100 条示例）`;
+    gridEl.innerHTML = toShow.map(p => `
       <article class="card">
         <div class="thumb">
           <img src="${p.img}" alt="${escapeHtml(p.title)}" loading="lazy">
         </div>
-        <div class="cat">${escapeHtml(p.category)} · ASIN: ${p.asin}</div>
+        <div class="cat">${escapeHtml(p.category)} · 示例 · ASIN: ${p.asin}</div>
         <div class="title">${escapeHtml(p.title)}</div>
-        <div class="desc">${escapeHtml(p.review.slice(0,80))}...</div>
+        <div class="snippet">${escapeHtml(p.snippet)}</div>
         <div class="meta">
           <div class="price">约 $${p.price}</div>
-          <div style="display:flex;gap:6px;">
-            <button class="btn btn-ghost" onclick="openDetail('${p.asin}')">详情</button>
-            <a class="btn btn-primary" href="${affiliateUrl(p.asin)}" target="_blank" rel="nofollow noopener">Amazon</a>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="openDetail('${p.asin}')">阅读评测</button>
+            <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">前往 Amazon</a>
           </div>
         </div>
       </article>
     `).join('');
 
-    if(shown >= currentList.length) loadMoreBtn.style.display = 'none';
-    else loadMoreBtn.style.display = 'inline-flex';
+    loadMoreBtn.style.display = (shown >= currentList.length) ? 'none' : 'inline-block';
   }
 
   function openDetail(asin){
-    const p = PRODUCTS.find(x=>x.asin===asin);
+    const p = PRODUCTS.find(x=>x.asin === asin);
     if(!p) return;
     detailInner.innerHTML = `
       <div>
-        <img src="${p.img}" alt="${escapeHtml(p.title)}" style="width:100%;border-radius:10px;">
+        <img src="${p.img}" alt="${escapeHtml(p.title)}">
       </div>
       <div>
-        <h3>${escapeHtml(p.title)}</h3>
-        <div class="cat">类别：${escapeHtml(p.category)} · ASIN：${p.asin}</div>
+        <div class="detail-title">${escapeHtml(p.title)}</div>
+        <div class="detail-meta">类别：${escapeHtml(p.category)} · 示例 ASIN：${p.asin} · 约 $${p.price}</div>
         <div class="pill-row">
-          <span class="pill">示例评测</span>
-          <span class="pill">约 $${p.price}</span>
+          <span class="pill">编辑部视角评测</span>
+          <span class="pill">示例站点 · 结构演示</span>
           <span class="pill">适合：日常用户</span>
         </div>
-        <div class="long">${escapeHtml(p.review)}</div>
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-          <a class="btn btn-primary" href="${affiliateUrl(p.asin)}" target="_blank" rel="nofollow noopener">前往 Amazon 查看详情</a>
+        <div class="detail-body">
+          ${p.review.split('\\n\\n').map(par=>`<p>${escapeHtml(par)}</p>`).join('')}
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-primary" href="${affiliateUrl(p)}" target="_blank" rel="nofollow noopener">在 Amazon 上查看类似产品</a>
           <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
         </div>
       </div>
@@ -339,7 +384,7 @@
   }
 
   function loadMore(){
-    shown += perPage;
+    shown = Math.min(currentList.length, shown + perPage);
     renderGrid();
   }
 
@@ -347,7 +392,7 @@
 
   // 分类筛选
   const chips = document.querySelectorAll('.chip');
-  chips.forEach(ch=>{
+  chips.forEach(ch => {
     ch.addEventListener('click', ()=>{
       chips.forEach(c=>c.classList.remove('active'));
       ch.classList.add('active');
@@ -355,9 +400,9 @@
       if(cat === '全部'){
         currentList = PRODUCTS.slice();
       }else{
-        currentList = PRODUCTS.filter(p=>p.category===cat);
+        currentList = PRODUCTS.filter(p=>p.category === cat);
       }
-      shown = Math.min(perPage,currentList.length);
+      shown = Math.min(perPage, currentList.length);
       detailSection.style.display = 'none';
       renderGrid();
     });
@@ -369,7 +414,7 @@
     doSearch(q);
   });
   document.getElementById('searchInput').addEventListener('keydown', e=>{
-    if(e.key==='Enter'){
+    if(e.key === 'Enter'){
       const q = e.target.value.trim().toLowerCase();
       doSearch(q);
     }
@@ -380,28 +425,18 @@
       currentList = PRODUCTS.slice();
     }else{
       currentList = PRODUCTS.filter(p=>{
-        return p.title.toLowerCase().includes(q) ||
-               p.category.toLowerCase().includes(q) ||
-               p.asin.toLowerCase().includes(q) ||
-               p.review.toLowerCase().includes(q);
+        const text = (p.title + ' ' + p.category + ' ' + p.review + ' ' + p.asin).toLowerCase();
+        return text.includes(q);
       });
     }
-    shown = Math.min(perPage,currentList.length);
+    shown = Math.min(perPage, currentList.length);
     detailSection.style.display = 'none';
     renderGrid();
   }
 
-  // 小工具函数
-  function escapeHtml(str){
-    return String(str).replace(/[&<>"']/g,function(m){
-      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
-    });
-  }
-
-  // 初始化
+  // init
   renderGrid();
-
-  // 暴露函数给按钮
+  // 暴露给 HTML
   window.openDetail = openDetail;
   window.closeDetail = closeDetail;
 </script>
