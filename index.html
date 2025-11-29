@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Independent product reviews & buying advice with real ASIN links for UK shoppers. Editorial-style summaries only; not endorsed by any retailer."
+    content="Independent product reviews & buying advice with real ASIN links for UK shoppers. Editorial content only; not endorsed or pre-approved by Amazon."
   />
   <style>
     :root {
@@ -474,7 +474,7 @@
         <div class="site-subtitle">
           <span>Independent product reviews &amp; buying advice for UK shoppers</span>
           <span class="dot"></span>
-          <span>Not endorsed by any retailer.</span>
+          <span>Independent editorial content. Not endorsed or pre-approved by Amazon.</span>
         </div>
       </div>
       <div class="top-nav">
@@ -503,7 +503,7 @@
         <p>
           This page uses real product ASINs and editorial-style summaries,
           displayed in a grid that is designed to be friendly for standard affiliate programs.
-          Each card leads directly to the matching product page on the retailer site with the
+          Each card leads directly to the matching product page on Amazon.co.uk with the
           affiliate tag applied.
         </p>
         <div class="meta-row">
@@ -514,7 +514,7 @@
           </span>
           <span class="badge-soft">
             5 broad usage categories &bull; Real product images &amp; ASINs &bull;
-            First-click affiliate links
+            Direct /dp/ links with tag
           </span>
         </div>
         <div class="key-points">
@@ -530,9 +530,9 @@
         <h2>How to use this shortlist</h2>
         <p>
           Each product card gives you a short editorial-style note plus a direct
-          link to the live product page on the retailer site. Treat this page as a curated
+          link to the live product page on Amazon.co.uk. Treat this page as a curated
           shortlist, not a replacement for reading the full details and reviews
-          on the retailer site.
+          on Amazon.co.uk.
         </p>
         <ul>
           <li>
@@ -553,7 +553,7 @@
         </ul>
         <p>
           Final pricing, availability and review scores are always determined by
-          the retailer site on their own pages.
+          Amazon.co.uk on their own pages.
         </p>
       </aside>
     </section>
@@ -610,14 +610,14 @@
         <p>
           Each card on this page is written to help you think about those questions
           so you can quickly decide whether a product might be a “good-enough fit”
-          before opening the full details on the retailer product page.
+          before opening the full details on the Amazon.co.uk product page.
         </p>
       </article>
 
       <article class="card info-card">
         <h3>About this UK shortlist</h3>
         <p>
-          All products on this page are selected from a major online retailer using publicly
+          All products on this page are selected from Amazon.co.uk using publicly
           available information such as product descriptions, feature lists and
           typical UK usage scenarios. The focus is on clear, balanced everyday
           picks rather than chasing only the newest or most expensive models.
@@ -641,7 +641,7 @@
           Basic traffic analytics may be used to understand anonymous page usage
           such as page views and clicks. For the latest information on how your
           data is handled, please always check the privacy policy and terms of use
-          on the retailer site.
+          on Amazon.co.uk or the relevant retailer site.
         </p>
       </article>
 
@@ -786,8 +786,8 @@
       const hook =
         `This pick is designed as a practical option in the ${broadCat.toLowerCase()} space for UK shoppers, balancing everyday performance and value.`;
       const details =
-        "Use this shortlist as a quick way to spot products that may deserve a closer look on the retailer's product page. Each card focuses on simple fit, features and everyday UK use rather than chasing extreme specs.";
-      const approxPriceLabel = "Check live price on the retailer site";
+        "Use this shortlist as a quick way to spot products that may deserve a closer look on the Amazon.co.uk product page. Each card focuses on simple fit, features and everyday UK use rather than chasing extreme specs.";
+      const approxPriceLabel = "Check live price on Amazon.co.uk";
       const amazonUrl = `https://${AMAZON_DOMAIN}/dp/${p.asin}/?tag=${AFFILIATE_TAG}`;
       const reviewText =
         `${title}\n\n` +
@@ -795,7 +795,7 @@
         `• Everyday use: aimed at typical home or personal use rather than specialist scenarios.\n` +
         `• Effort vs. benefit: chosen where setup, maintenance and day-to-day use feel reasonable for most people.\n` +
         `• Value: not always the absolute cheapest, but offering a sensible balance of features for the price.\n\n` +
-        `Always open the full product page on the retailer site to check the latest details, compatibility notes and customer reviews before you decide.`;
+        `Always open the full product page on Amazon.co.uk to check the latest details, compatibility notes and customer reviews before you decide.`;
       return {
         ...p,
         broadCategory: broadCat,
@@ -842,9 +842,9 @@
                 <span class="meta-cat">${p.broadCategory}</span>
                 <span class="meta-asin">ASIN: ${p.asin}</span>
               </div>
-              <h3 class="product-card_title">${p.title}</h3>
-              <p class="product-card_hook">${p.hook}</p>
-              <p class="product-card_desc">${p.details}</p>
+                <h3 class="product-card_title">${p.title}</h3>
+                <p class="product-card_hook">${p.hook}</p>
+                <p class="product-card_desc">${p.details}</p>
             </div>
             <div class="product-card_footer">
               <div class="product-card_price">${p.approxPriceLabel}</div>
